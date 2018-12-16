@@ -42,13 +42,26 @@ let (res_six_x, res_six_y, res_six_z) = tuple_b;;
   
 
 let distance (x1, y1) (x2, y2) =
-  Float.sqrt ((x1 -. x2) **. 2. +. (y1 -. y2) **. 2.)
+  Float.sqrt ((x1 -. x2) ** 2. +. (y1 -. y2) ** 2.)
 ;;
 
 let languages = ["OCaml"; "Scheme"; "Rust"; "Typescript"];;
+let js_frameworks = "React" :: "Vue" :: "Svelte" :: [];;
 
-List.map ~f:String.length languages;;
+let length_of_string_list list =
+  List.map ~f:String.length list
+;;
+  
+length_of_string_list languages;;
+length_of_string_list js_frameworks;;
 
+[1; 2; 3;] @ [4; 5; 6];;
 
-    
-    
+  
+(* pattern matching *)
+
+let my_favorite_language languages =
+  match languages with
+  | (first :: _) -> first
+  | [] -> "Ocaml"
+;;
