@@ -65,3 +65,11 @@ let my_favorite_language languages =
   | (first :: _) -> first
   | [] -> "Ocaml"
 ;;
+
+(* recursive fns *)
+
+let rec sum list =
+  match list with
+  | [] -> 0
+  | a :: b -> a + sum b
+;;
