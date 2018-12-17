@@ -73,3 +73,15 @@ let rec sum list =
   | [] -> 0
   | a :: b -> a + sum b
 ;;
+
+let wrap_string s =
+  "[ " ^ s ^ " ]"
+;;
+
+(* wrap list of strings *)
+let rec wrap_los los =
+  match los with
+  | [] -> ""
+  | hd :: tl ->
+    (wrap_string hd) ^ wrap_los tl
+;;
