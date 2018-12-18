@@ -85,3 +85,12 @@ let rec wrap_los los =
   | hd :: tl ->
     (wrap_string hd) ^ wrap_los tl
 ;;
+
+(* options *)
+
+let downcase_ext filename =
+  match String.resplit2 filename ~on:"." with
+  | None -> filename
+  | Some (base, ext) ->
+    base ^ "." ^ String.lowercase ext
+;;
