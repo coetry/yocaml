@@ -74,11 +74,12 @@ let rec sum list =
   | a :: b -> a + sum b
 ;;
 
+(* wrap list of strings *)
+
 let wrap_string s =
   "[ " ^ s ^ " ]"
 ;;
 
-(* wrap list of strings *)
 let rec wrap_los los =
   match los with
   | [] -> ""
@@ -86,11 +87,23 @@ let rec wrap_los los =
     (wrap_string hd) ^ wrap_los tl
 ;;
 
+(* remove sequential duplicates *)
+
+let rec remove_seq_dups lst =
+  match lst with
+  | [] -> []
+  | [hd] -> [hd]
+  | hd1 :: hd2 :: tl ->
+    if hd1 = hd2 then remove_seq_dups (hd2 :: tl)
+    else hd1 :: remove_seq_dups (hd2 :: tl)
+;;
+
 (* options *)
 
 let downcase_ext filename =
-  match String.resplit2 filename ~on:"." with
+  match String.rsplit2 filename ~on:'.' with
   | None -> filename
   | Some (base, ext) ->
     base ^ "." ^ String.lowercase ext
 ;;
+
