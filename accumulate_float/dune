@@ -1,0 +1,4 @@
+(executable
+  (name af)
+  (libraries base stdio))
+    
